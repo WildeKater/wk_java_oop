@@ -42,7 +42,7 @@ public class Main {
 		
 		System.out.println();
 		
-		boardOne.setShapeOne(null);
+		boardOne.clearShapeOne();
 		System.out.println(boardOne);
 		
 	}
