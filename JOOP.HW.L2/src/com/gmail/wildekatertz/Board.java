@@ -28,12 +28,20 @@ public class Board {
 		this.shapeOne = shapeOne;
 	}
 
+	public void clearShapeOne() {
+		this.shapeOne = null;
+	}
+
 	public Shape getShapeTwo() {
 		return shapeTwo;
 	}
 
 	public void setShapeTwo(Shape shapeTwo) {
 		this.shapeTwo = shapeTwo;
+	}
+
+	public void clearShapeTwo() {
+		this.shapeTwo = null;
 	}
 
 	public Shape getShapeThree() {
@@ -44,12 +52,20 @@ public class Board {
 		this.shapeThree = shapeThree;
 	}
 
+	public void clearShapeThree() {
+		this.shapeThree = null;
+	}
+
 	public Shape getShapeFour() {
 		return shapeFour;
 	}
 
 	public void setShapeFour(Shape shapeFour) {
 		this.shapeFour = shapeFour;
+	}
+
+	public void clearShapeFour() {
+		this.shapeFour = null;
 	}
 
 	private void filBoard() {
@@ -73,10 +89,10 @@ public class Board {
 	@Override
 	public String toString() {
 		filBoard();
-		String s = "Board [ "+ "\n";
+		String s = "Board [ " + "\n";
 		for (int i = 0; i < newBoard.length; i++) {
 			if (newBoard[i] != null) {
-				s = s + newBoard[i].toString()+","+ "\n";
+				s = s + newBoard[i].toString() + "," + "\n";
 			}
 		}
 
