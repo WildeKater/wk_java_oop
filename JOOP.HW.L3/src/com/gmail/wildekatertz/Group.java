@@ -26,13 +26,13 @@ public class Group implements java.io.Serializable {
 	 * Добавление студента в группу.
 	 * 
 	 * Происходит проверка наличия свободного места в группе через метод
-	 * <code>StudentAddCheck()</code>
+	 * <code>studentAddCheck()</code>
 	 * 
 	 * Дополнительно обрабатывается ошибка <code>FullGroupException</code> метода
-	 * <code>StudentAddCheck()</code>
+	 * <code>studentAddCheck()</code>
 	 * 
 	 * Происходит проверка отсутствия студента в группе через метод
-	 * <code>StudentCheck()</code>
+	 * <code>studentCheck()</code>
 	 * 
 	 * @param <code>student</code> Объект класса Student
 	 * 
@@ -40,7 +40,7 @@ public class Group implements java.io.Serializable {
 	 */
 	public void addStudent(Student student) {
 		try {
-			if (StudentAddCheck() && !StudentCheck(student)) {
+			if (studentAddCheck() && !studentCheck(student)) {
 				for (int i = 0; i < group.length; i++) {
 					if (group[i] == null) {
 						group[i] = student;
@@ -48,7 +48,7 @@ public class Group implements java.io.Serializable {
 						break;
 					}
 				}
-			} else if (StudentCheck(student)) {
+			} else if (studentCheck(student)) {
 				System.out.println("Студент " + student.getName() + " уже в группе");
 			}
 		} catch (FullGroupException e) {
@@ -60,7 +60,7 @@ public class Group implements java.io.Serializable {
 	 * Удаление студента из группы.
 	 * 
 	 * Происходит проверка наличия студента в группе через метод
-	 * <code>StudentCheck()</code>
+	 * <code>studentCheck()</code>
 	 * 
 	 * В случае наличия студента в группе происходит запись <code>null</code> на его
 	 * место
@@ -73,7 +73,7 @@ public class Group implements java.io.Serializable {
 	 * @author AlexeyA
 	 */
 	public void removeStudent(Student student) {
-		if (StudentCheck(student)) {
+		if (studentCheck(student)) {
 			for (int i = 0; i < group.length; i++) {
 				if (group[i].equals(student)) {
 					group[i] = null;
@@ -97,7 +97,7 @@ public class Group implements java.io.Serializable {
 	 * 
 	 * @author AlexeyA
 	 */
-	private boolean StudentAddCheck() throws FullGroupException {
+	private boolean studentAddCheck() throws FullGroupException {
 		boolean groupCheck = false;
 		for (Human i : group) {
 			if (i == null) {
@@ -119,10 +119,10 @@ public class Group implements java.io.Serializable {
 	 * 
 	 * @author AlexeyA
 	 */
-	private boolean StudentCheck(Student student) {
+	private boolean studentCheck(Student student) {
 		boolean groupCheck = false;
 		for (Human i : group) {
-			if (i == student) {
+			if ((i != null) && (i.equals(student))) {
 				groupCheck = true;
 			}
 		}

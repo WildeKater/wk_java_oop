@@ -1,12 +1,12 @@
 package com.gmail.wildekatertz;
 
-public class Student extends Human implements java.io.Serializable{
+public class Student extends Human implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private static int studentNumber = 0;
 	private int studentId;
 
@@ -24,6 +24,20 @@ public class Student extends Human implements java.io.Serializable{
 
 	public int getStudentId() {
 		return studentId;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		Student student = (Student) obj;
+
+		if ((obj != null) && (this.getStudentId() == student.getStudentId()) && (this.getName() == student.getName())
+				&& (this.getGender() == student.getGender()) && (this.getAge() == student.getAge())) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class Main {
 		System.out.println(humanNine);
 		System.out.println(humanTen);
 		System.out.println(humanEleven);
-		
+
 		System.out.println();
 
 		Group gr = new Group(humanOne, humanTwo, humanThree, humanFour);
@@ -41,16 +41,16 @@ public class Main {
 		gr.addStudent(humanEleven);
 		gr.removeStudent(humanEleven);
 		gr.removeStudent(humanOne);
-		
+
 		System.out.println();
-		
+
 		System.out.println(gr.findStudent("Eta"));
 		System.out.println(gr.findStudent("Alpha"));
-		
+
 		System.out.println();
-		
+
 		System.out.println(gr);
-		
+
 	}
 
 }
