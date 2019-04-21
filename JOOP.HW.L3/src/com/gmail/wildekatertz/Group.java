@@ -142,7 +142,7 @@ public class Group implements java.io.Serializable {
 	public Student findStudent(String name) {
 		Student findlyStudent = null;
 		for (Human i : group) {
-			if ((i != null) && (i.getName() == name)) {
+			if ((i != null) && ((i.getName()).equals(name))) {
 				findlyStudent = (Student) i;
 			}
 		}
