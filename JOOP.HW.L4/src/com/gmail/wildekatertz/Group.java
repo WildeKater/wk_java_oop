@@ -1,7 +1,9 @@
 package com.gmail.wildekatertz;
 
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
-
 import com.gmail.wildekatertz.Exceptions.*;
 
 public class Group implements java.io.Serializable, Voencom {
@@ -11,7 +13,7 @@ public class Group implements java.io.Serializable, Voencom {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Human[] group = new Human[10];
+	private Student[] group = new Student[10];
 
 	public Group() {
 		super();
@@ -158,16 +160,14 @@ public class Group implements java.io.Serializable, Voencom {
 	 * @author AlexeyA
 	 */
 	public void sortGroupBy() {
-		Human temp;
-		boolean flag;
+		ArrayList<Student> groupList = new ArrayList<Student>(Arrays.asList(group));
 		System.out.println("Введите параметр сортировки(GENDER / AGE / NAME)");
 		StudentParam studentParam = null;
-
 		for (;;) {
 			Scanner sc = new Scanner(System.in);
 			String stringParam = sc.nextLine();
 			try {
-				studentParam = studentParam.valueOf(stringParam.toUpperCase());
+				studentParam = StudentParam.valueOf(stringParam.toUpperCase());
 				break;
 			} catch (Exception e) {
 				System.out.println("Введите корректное значение параметра сортировки(GENDER / AGE / NAME)");
@@ -175,57 +175,20 @@ public class Group implements java.io.Serializable, Voencom {
 		}
 		switch (studentParam) {
 		case AGE:
-			for (;;) {
-				flag = true;
-				for (int i = 0; i < group.length - 1; i++) {
-					if ((group[i] == null) || ((group[i] != null) && (group[i + 1] != null))
-							&& (group[i].getAge() > (group[i + 1].getAge()))) {
-						temp = group[i];
-						group[i] = group[i + 1];
-						group[i + 1] = temp;
-						flag = false;
-					}
-				}
-				if (flag) {
-					break;
-				}
-			}
+			Collections.sort(groupList, Student.COMPARE_BY_AGE);
 			break;
 		case GENDER:
-			for (;;) {
-				flag = true;
-				for (int i = 0; i < group.length - 1; i++) {
-					if ((group[i] == null) || ((group[i] != null) && (group[i + 1] != null))
-							&& (group[i].getGender().ordinal() > group[i + 1].getGender().ordinal())) {
-						temp = group[i];
-						group[i] = group[i + 1];
-						group[i + 1] = temp;
-						flag = false;
-					}
-				}
-				if (flag) {
-					break;
-				}
-			}
+			Collections.sort(groupList, Student.COMPARE_BY_GENDER);
 			break;
 		case NAME:
-			for (;;) {
-				flag = true;
-				for (int i = 0; i < group.length - 1; i++) {
-					if ((group[i] == null) || ((group[i] != null) && (group[i + 1] != null))
-							&& (group[i].getName().compareTo(group[i + 1].getName()) > 0)) {
-						temp = group[i];
-						group[i] = group[i + 1];
-						group[i + 1] = temp;
-						flag = false;
-					}
-				}
-				if (flag) {
-					break;
-				}
-			}
+			Collections.sort(groupList, Student.COMPARE_BY_NAME);
 			break;
 		}
+
+		group = groupList.toArray(group);
+
+		System.out.println("Массив после сортировки по критерию " + studentParam);
+		System.out.println(toStringWithoutSort());
 
 	}
 
@@ -237,9 +200,28 @@ public class Group implements java.io.Serializable, Voencom {
 	 */
 	@Override
 	public String toString() {
+		Arrays.sort(group);
 		String stringGroup = "";
 		stringGroup = "Group [group=" + System.lineSeparator();
-		for (Human i : group) {
+		for (Student i : group) {
+			if (i != null) {
+				stringGroup += i.toString() + System.lineSeparator();
+			}
+		}
+		stringGroup += "]";
+		return stringGroup;
+	}
+
+	/**
+	 * Вывод списка группы. Перед началом вывода запускается сортировка массива
+	 * через метод <code>sortGroup</code>
+	 * 
+	 * @author AlexeyA
+	 */
+	private String toStringWithoutSort() {
+		String stringGroup = "";
+		stringGroup = "Group [group=" + System.lineSeparator();
+		for (Student i : group) {
 			if (i != null) {
 				stringGroup += i.toString() + System.lineSeparator();
 			}
@@ -250,15 +232,16 @@ public class Group implements java.io.Serializable, Voencom {
 
 	@Override
 	public Student[] armyList() {
-		Student[] armyList = new Student[group.length];
-		int j = 0;
-		for (Human i : group) {
+
+		ArrayList<Student> studentList = new ArrayList<Student>();
+		for (Student i : group) {
 			if ((i != null) && (i.getGender() == Genders.FEMALE) && (i.getAge() >= 18)) {
-				armyList[j] = (Student) i;
-				j++;
+				studentList.add((Student) i);
 			}
 		}
+		Collections.sort(studentList, Student.COMPARE_BY_NAME);
 
+		Student[] armyList = studentList.toArray(new Student[studentList.size()]);
 		return armyList;
 	}
 

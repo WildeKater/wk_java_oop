@@ -57,15 +57,13 @@ public class Main {
 
 		Student[] armyList = gr.armyList();
 		System.out.println("Призывники:");
+
 		for (Student i : armyList) {
-			if (i != null) {
-				System.out.println(i);
-			}
+			System.out.println(i);
 		}
 
 		System.out.println();
 		gr.sortGroupBy();
-		System.out.println(gr);
 
 	}
 
