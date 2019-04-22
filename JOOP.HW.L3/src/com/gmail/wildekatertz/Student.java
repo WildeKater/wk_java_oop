@@ -28,16 +28,27 @@ public class Student extends Human implements java.io.Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-
-		Student student = (Student) obj;
-
-		if ((obj != null) && (this.getStudentId() == student.getStudentId()) && (this.getName() == student.getName())
-				&& (this.getGender() == student.getGender()) && (this.getAge() == student.getAge())) {
+		if (this == obj)
 			return true;
-		} else {
+		if (obj == null)
 			return false;
-		}
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if ((this.studentId != other.studentId) || (this.getAge() != other.getAge())
+				|| (this.getGender() != other.getGender()) || (this.getName() != other.getName()))
+			return false;
+		return true;
+	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.getName() == null ? 0 : this.getName().hashCode());
+		result = prime * result + this.getAge();
+		result = prime * result + (this.getGender() == null ? 0 : this.getGender().hashCode());
+		return result;
 	}
 
 	@Override

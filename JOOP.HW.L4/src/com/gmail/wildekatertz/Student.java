@@ -51,6 +51,31 @@ public class Student extends Human implements java.io.Serializable, Comparable<S
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if ((this.studentId != other.studentId) || (this.getAge() != other.getAge())
+				|| (this.getGender() != other.getGender()) || (this.getName() != other.getName()))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (this.getName() == null ? 0 : this.getName().hashCode());
+		result = prime * result + this.getAge();
+		result = prime * result + (this.getGender() == null ? 0 : this.getGender().hashCode());
+		return result;
+	}
+
+	@Override
 	public int compareTo(Student student) {
 		if (student == null) {
 			return -1;
