@@ -1,8 +1,9 @@
 package com.gmail.wildekatertz;
 
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import com.gmail.wildekatertz.Exceptions.*;
 
@@ -160,7 +161,7 @@ public class Group implements java.io.Serializable, Voencom {
 	 * @author AlexeyA
 	 */
 	public void sortGroupBy() {
-		ArrayList<Student> groupList = new ArrayList<Student>(Arrays.asList(group));
+		List<Student> groupList = new ArrayList<Student>(Arrays.asList(group));
 		System.out.println("Введите параметр сортировки(GENDER / AGE / NAME)");
 		StudentParam studentParam = null;
 		for (;;) {
@@ -233,7 +234,7 @@ public class Group implements java.io.Serializable, Voencom {
 	@Override
 	public Student[] armyList() {
 
-		ArrayList<Student> studentList = new ArrayList<Student>();
+		List<Student> studentList = new ArrayList<Student>();
 		for (Student i : group) {
 			if ((i != null) && (i.getGender() == Genders.FEMALE) && (i.getAge() >= 18)) {
 				studentList.add((Student) i);

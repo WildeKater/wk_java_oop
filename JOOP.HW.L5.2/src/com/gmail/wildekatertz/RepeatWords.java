@@ -4,12 +4,13 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepeatWords {
 
 	private static String[] unicWords(String[] str1, String[] str2) {
 
-		ArrayList<String> uWordsList = new ArrayList<String>();
+		List<String> uWordsList = new ArrayList<String>();
 
 		for (String i : str1) {
 			for (String j : str2) {
@@ -27,7 +28,7 @@ public class RepeatWords {
 	}
 
 	public static void unicWords(String firstFile, String secondFile, String fileOut) {
-		
+
 		String[] str1 = FileWords.wordsInFile(firstFile);
 		String[] str2 = FileWords.wordsInFile(secondFile);
 

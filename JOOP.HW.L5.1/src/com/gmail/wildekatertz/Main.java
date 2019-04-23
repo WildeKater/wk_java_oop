@@ -1,5 +1,7 @@
 package com.gmail.wildekatertz;
 
+import java.io.IOException;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -8,7 +10,11 @@ public class Main {
 		String pathToDir = ".\\testDirTo";
 		String fileFilter = "docx";
 
-		CopyDir.copyDir(pathFromDir, pathToDir, fileFilter);
+		try {
+			CopyDir.copyDir(pathFromDir, pathToDir, fileFilter);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
