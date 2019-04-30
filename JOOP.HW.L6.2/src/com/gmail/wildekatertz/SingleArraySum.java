@@ -1,7 +1,5 @@
 package com.gmail.wildekatertz;
 
-import java.math.BigInteger;
-
 public class SingleArraySum implements Runnable {
 
 	private int[] array;
@@ -23,12 +21,12 @@ public class SingleArraySum implements Runnable {
 		thr.start();
 	}
 
-	public BigInteger calculateFactorial(int n) {
-		BigInteger factor = new BigInteger("1");
-		for (int i = 1; i <= n; i++) {
-			factor = factor.multiply(new BigInteger(Integer.toString(i)));
-		}
-		return factor;
+	public Thread getThr() {
+		return thr;
+	}
+
+	public int getSumm() {
+		return summ;
 	}
 
 	@Override
@@ -36,11 +34,7 @@ public class SingleArraySum implements Runnable {
 		for (int i = begin; i < end; i++) {
 			summ = summ + array[i];
 		}
-		if (thr.isInterrupted()) {
-			System.out.println(thr.getName() + " interrupted!");
-			return;
-		}
-
 	}
+	
 
 }
