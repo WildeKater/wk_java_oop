@@ -2,36 +2,29 @@ package com.gmail.wildekatertz;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Random;
-import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		int[] arr = new int[13];
+		Integer[] arr = new Integer[13];
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = -20 + new Random().nextInt(40);
 		}
 
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
+		System.out.println(Arrays.toString(arr));
 
-		System.out.println();
-		System.out.println(find(arr));
+		System.out.println("min = " + find(arr));
 
 	}
 
-	private static OptionalInt find(int[] arr) {
+	private static int find(Integer[] arr) {
 
-		OptionalInt findNum = Arrays.stream(arr)
-				.min();
-				
-
+		int findNum = Arrays.asList(arr).stream()
+				.min((p1, p2) -> (Math.abs(p1) - Math.abs(p2)) == 0 ? ((Math.abs(p1) - Math.abs(p2)) * -1)
+						: (Math.abs(p1) - Math.abs(p2)))
+				.get();
 
 		return findNum;
 	}
