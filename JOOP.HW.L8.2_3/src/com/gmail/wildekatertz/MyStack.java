@@ -28,11 +28,16 @@ public class MyStack {
 	}
 
 	public Object stackPop() {
-		Object popEl = stackArray[stackLoad];
-		stackArray[stackLoad] = null;
-		stackLoad--;
-		System.out.println("Ёлемент " + popEl + " извлечен");
-		return popEl;
+		if (stackLoad != -1) {
+			Object popEl = stackArray[stackLoad];
+			stackArray[stackLoad] = null;
+			stackLoad--;
+			System.out.println("Ёлемент " + popEl + " извлечен");
+			return popEl;
+		}else {
+			System.out.println("—тек пустой");
+			return null;
+		}
 	}
 
 	public Object stackLook() {
@@ -74,6 +79,5 @@ public class MyStack {
 		stackBlackList.addToBlackList(clasName);
 		System.out.println(" ласс " + clasName + " добавлен в чЄрный список");
 	}
-
 
 }

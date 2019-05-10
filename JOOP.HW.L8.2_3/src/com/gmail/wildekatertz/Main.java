@@ -37,6 +37,9 @@ public class Main {
 		System.out.println();
 
 		System.out.println(ms);
+		
+		MyStack ms2 = new MyStack();
+		System.out.println(ms2.stackPop());
 
 	}
 
