@@ -34,15 +34,20 @@ public class MyStack {
 			stackLoad--;
 			System.out.println("Ёлемент " + popEl + " извлечен");
 			return popEl;
-		}else {
+		} else {
 			System.out.println("—тек пустой");
 			return null;
 		}
 	}
 
 	public Object stackLook() {
-		System.out.println("Ёлемент вершины стека " + stackArray[stackLoad]);
-		return stackArray[stackLoad];
+		if (stackLoad != -1) {
+			System.out.println("Ёлемент вершины стека " + stackArray[stackLoad]);
+			return stackArray[stackLoad];
+		} else {
+			System.out.println("—тек пустой");
+			return null;
+		}
 	}
 
 	private void stackResize() {

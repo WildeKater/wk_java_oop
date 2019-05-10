@@ -40,6 +40,7 @@ public class Main {
 		
 		MyStack ms2 = new MyStack();
 		System.out.println(ms2.stackPop());
+		System.out.println(ms2.stackLook());
 
 	}
 
