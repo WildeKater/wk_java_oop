@@ -63,7 +63,7 @@ public class Group implements java.io.Serializable, Voencom {
 			System.out.println("Студент " + student.getName() + " уже в группе");
 		}
 		try {
-			if (StudentAddCheck()) {
+			if (studentAddCheck()) {
 				group.add(student);
 			}
 		} catch (FullGroupException e) {
@@ -107,7 +107,7 @@ public class Group implements java.io.Serializable, Voencom {
 	 * 
 	 * @author AlexeyA
 	 */
-	private boolean StudentAddCheck() throws FullGroupException {
+	private boolean studentAddCheck() throws FullGroupException {
 		if (group.size() < 10) {
 			return true;
 		} else {
