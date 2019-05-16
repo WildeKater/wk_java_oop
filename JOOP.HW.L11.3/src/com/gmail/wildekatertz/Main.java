@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int[] arr = new int[23];
+		Integer[] arr = new Integer[23];
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = new Random().nextInt(10);
 		}
@@ -18,21 +18,19 @@ public class Main {
 
 		HashMap<Integer, Integer> mapArr = getCalcRepeat(arr);
 
-		for (Map.Entry<Integer, Integer> i : mapArr.entrySet()) {
-			System.out
-					.print("Число " + i.getKey() + " повторяется " + i.getValue() + " раз(а)" + System.lineSeparator());
-		}
+
+		System.out.println(mapArr);
 
 	}
 
-	public static HashMap<Integer, Integer> getCalcRepeat(int[] arr) {
+	public static HashMap<Integer, Integer> getCalcRepeat(Integer[] arr) {
 		HashMap<Integer, Integer> mapArr = new HashMap<Integer, Integer>();
-		for (int i : arr) {
-			if (!mapArr.containsKey(i)) {
+		for (Integer i : arr) {
+			Integer tmp = mapArr.get(i);
+			if (tmp == null) {
 				mapArr.put(i, 1);
 			} else {
-				int tmp = mapArr.get(i) + 1;
-				mapArr.put(i, tmp);
+				mapArr.put(i, tmp + 1);
 			}
 		}
 		return mapArr;

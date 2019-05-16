@@ -5,4 +5,3 @@ thursday,четверг
 friday,пятница
 saturday,суббота
 sunday,воскресенье
-winter,зима
