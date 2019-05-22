@@ -26,7 +26,7 @@ public class LinksCheck {
 		String status;
 		URL urlCon = new URL(link);
 		HttpURLConnection connection = (HttpURLConnection) urlCon.openConnection();
-		if ( connection.getResponseCode() == 200) {
+		if (connection.getResponseCode() == 200) {
 			status = "ok";
 		} else {
 			status = "not ok";
